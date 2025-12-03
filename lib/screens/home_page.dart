@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gr3at_note_app/screens/newnote_popup_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,6 +10,24 @@ class HomePage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         backgroundColor: Colors.white,
+
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (_) => NewNotePopupPage(),
+            );
+          },
+          backgroundColor: const Color(0xFF3D8BFF), //change
+          elevation: 6,
+          shape: const CircleBorder(),
+          child: const Icon(Icons.add, size: 32, color: Colors.white),
+        ),
+
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+
         body: SafeArea(
           child: Column(
             children: [
@@ -63,8 +82,10 @@ class HomePage extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: 'Search',
                             border: InputBorder.none,
-                            prefixIcon:
-                                Icon(Icons.search, color: Color.fromARGB(115, 39, 39, 39)),
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: Color.fromARGB(115, 39, 39, 39),
+                            ),
                             contentPadding: EdgeInsets.symmetric(vertical: 14),
                           ),
                         ),
@@ -100,11 +121,14 @@ class TopBarLeftBottomCurveClipper extends CustomClipper<Path> {
     path.lineTo(size.width, size.height);
 
     // move left along bottom to where the curve starts (startCurveX)
-    final double startCurveX = size.width * 0.22; // move this toward 0 to make notch start closer to left
+    final double startCurveX =
+        size.width *
+        0.22; // move this toward 0 to make notch start closer to left
     path.lineTo(startCurveX, size.height);
 
     // parameters controlling the notch shape
-    final double notchDepth = size.height * 0.20; // how high the notch cuts up from the bottom
+    final double notchDepth =
+        size.height * 0.20; // how high the notch cuts up from the bottom
     // control points for a smooth inward curve
     final double c1x = size.width * 0.12;
     final double c1y = size.height - notchDepth * 0.08;
