@@ -1,8 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'screens/home_page.dart'; // Add this import
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseAuth.instance.signInAnonymously();
+
   runApp(const NoteApp());
 }
 
@@ -28,7 +35,7 @@ class NoteApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomePage(), // Use HomePage
+      home: const HomePage(),
     );
   }
 }
