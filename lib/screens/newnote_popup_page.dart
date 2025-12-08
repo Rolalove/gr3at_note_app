@@ -122,15 +122,6 @@ class _NewNotePopupPageState extends State<NewNotePopupPage> {
             TitleInput(controller: _titleController),
             const SizedBox(height: 20),
 
-            // Description Label
-            const Text(
-              "Description",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-            ),
             const SizedBox(height: 8),
 
             // Description Field
@@ -190,6 +181,7 @@ class _NewNotePopupPageState extends State<NewNotePopupPage> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 15,
+                              color: Colors.white,
                             ),
                           ),
                   ),
